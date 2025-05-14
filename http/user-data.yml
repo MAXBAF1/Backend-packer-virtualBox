@@ -1,0 +1,34 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: ubuntu-server
+    username: ubuntu
+    password: "7804a56a5c7636cc05814736f44139e32920810d3bd51aa099a5df932e754ce9" 
+  locale: en_US
+  keyboard:
+    layout: us
+    variant: us
+  timezone: UTC
+  storage:
+    layout:
+      name: lvm
+    swap:
+      size: 0
+  ssh:
+    install-server: true
+    allow-pw: true
+  packages:
+    - openssh-server
+  apt:
+    proxy: ""
+  late-commands:
+    - curtin in-target -- systemctl enable ssh
+    - curtin in-target -- echo "ubuntu ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/ubuntu
+  user-data:
+    disable_root: false
+
+  update: false
+  interactive-sections: []
+  kernel:
+    package: linux-server
