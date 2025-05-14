@@ -1,0 +1,10 @@
+yc-manifest.json
+.vscode/settings.json
+resources/.env
+resources/jenkins_home_backup.zip
+
+packer_cache
+
+iso
+
+output
